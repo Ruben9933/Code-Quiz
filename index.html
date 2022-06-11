@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,25 @@
     <title>Code Quiz!</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
+<title>Test Your Knowledge!</title>
+
 <body>
-    
+    <div class="quizContainer">
+        <div id="quiz1" class="text-center">
+            <h2>Code Quiz!</h2>
+            <span id="iTimeShow">Time Remaining: </span>
+            <span id="timer" style="font-size: 35px;"></span>
+        </div>
+
+        <div class="question"></div>
+        <ul class="answer"></ul>
+        <div class="quizMessage"></div>
+        <div class="result"></div>
+        <button class="preButton">Previous Question</button>
+        <button class="nextButton">Next Question</button>
+    </div>
 </body>
+<script src="script.js"></script>
+
 </html>
