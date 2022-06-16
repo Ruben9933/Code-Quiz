@@ -1,8 +1,8 @@
 const question = document.querySelector('#question');
-const answers = Array.from(document.querySelectorAll('.answer-text'));
+const choices = Array.from(document.querySelectorAll('.answer-text'));
 const progressText = document.querySelector('.progressText');
 const scoreText = document.querySelector('#score');
-const progressBarFull = document.querySelector('#progressBarFull');
+
 
 
 let currentQuestion = {}
@@ -14,40 +14,40 @@ let availableQuestions = []
 let questions = [
     {
         question: 'What is the shortcut for an HTML boilerplate design in VSCode?',
-        answer1: 'html5',
-        answer2: 'html:5',
-        answer3: '5html',
-        answer4: 'html;5',
+        choice1: 'html5',
+        choice2: 'html:5',
+        choice3: '5html',
+        choice4: 'html;5',
         answer: 2,
     },
 
     {
         question: 'What is the bottom of a webpage called?',
-        answer1: 'bottom',
-        answer2: 'end',
-        answer3: 'last',
-        answer4: 'footer',
+        choice1: 'bottom',
+        choice2: 'end',
+        choice3: 'last',
+        choice4: 'footer',
         answer: 4,
     },
 
     {
         question: 'What does "<li>" stand for?',
-        answer1: 'listed increment',
-        answer2: 'listed individually',
-        answer3: 'listed item',
-        answer4: 'listed indefinitely',
+        choice1: 'listed increment',
+        choice2: 'listed individually',
+        choice3: 'listed item',
+        choice4: 'listed indefinitely',
         answer: 3,
     },
 
     {
         question: 'Which "<h>" element will show as a bigger font?',
-        answer1: '<h3>',
-        answer2: '<h1>',
-        answer3: '<h4>',
-        answer4: '<h7>',
+        choice1: '<h3>',
+        choice2: '<h1>',
+        choice3: '<h4>',
+        choice4: '<h7>',
         answer: 2,
     },
-    
+
 ]
 
 const SCORE_POINTS = 100
@@ -57,27 +57,25 @@ startGame = () => {
     questionCounter = 0
     score = 0
     availableQuestions = [...questions]
-    getNewQuestion()
+    getNewQuestions()
 }
 
-getNewQuestions = () => {
-    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+getNewQuestion = () => {
+    if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score)
 
         return window.location.assign('/end.html')
     }
 
-    questionCounter ++
-    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
-    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
+
 
     const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
     currentQuestion = availableQuestions[questionsIndex]
-    questions.innerText = currentQuestion.questions
+    question.innerText = currentQuestion.question
 
     choices.forEach(choice => {
         const number = choice.dataset['number']
-        choice.innerText = currentQuestion ['choice' + number]
+        choice.innerText = currentQuestion['choice' + number]
     })
 
     availableQuestions.splice(questionsIndex, 1)
@@ -85,23 +83,24 @@ getNewQuestions = () => {
     acceptingAnswers = true
 }
 
-answers.forEach(answer => {
-    answer.addEventListener('click', e => {
-        if(!acceptingAnswers) return
+choices.forEach(choice => {
+    choice.addEventListener('click', e => {
+        if (!acceptingAnswers) return
 
         acceptingAnswers = false
         const selectedChoice = e.target
         const selectedAnswer = selectedChoice.dataset['number']
 
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
+        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' :
+            'incorrect'
 
-        if(classToApply === 'correct') {
+        if (classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
         }
 
         selectedChoice.parentElement.classList.add(classToApply)
 
-        setTimeout (() => {
+        setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply)
             getNewQuestion()
 
@@ -110,7 +109,7 @@ answers.forEach(answer => {
 })
 
 incrementScore = num => {
-    score +=num
+    score += num
     scoreText.innerText = score
 }
 

@@ -1,5 +1,5 @@
 body {
-    color: white;
+    color: rgb(4, 3, 3);
 }
 
 .answer-container {
@@ -7,7 +7,7 @@ body {
     margin-bottom: 0.8rem;
     width: 100%;
     border-radius: 4px;
-    background: rgb(145, 15, 15);
+    background: rgb(172, 71, 71);
     font-size: 3rem;
     min-width: 80rem;
 }
@@ -21,7 +21,7 @@ body {
 
 .answer-prefix {
     padding: 2rem 2.5rem;
-    color: white;
+    color: rgb(0, 4, 1);
 }
 
 .answer-text {
@@ -51,20 +51,6 @@ body {
     text-align: center;
 }
 
-#progressBar {
-    width: 20rem;
-    height: 3rem;
-    border: 0.2rem solid rgb(41, 232, 111);
-    margin-top: 2rem;
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-#progressBarFull {
-    height: 100%;
-    background: rgb(41, 232, 111);
-    width: 0%;
-}
 
 
 @media screen and (max-width: 768px) {
