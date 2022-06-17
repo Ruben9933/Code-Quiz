@@ -58,7 +58,7 @@ startGame = () => {
     score = 0
     availableQuestions = [...questions]
     getNewQuestions()
-}
+};
 
 getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
@@ -81,7 +81,7 @@ getNewQuestion = () => {
     availableQuestions.splice(questionsIndex, 1)
 
     acceptingAnswers = true
-}
+};
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
@@ -106,11 +106,11 @@ choices.forEach(choice => {
 
         }, 1000)
     })
-})
+});
 
 incrementScore = num => {
     score += num
     scoreText.innerText = score
-}
+};
 
 startGame()
