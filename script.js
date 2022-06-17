@@ -48,7 +48,7 @@ let questions = [
         answer: 2,
     },
 
-]
+];
 
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 4
@@ -75,7 +75,7 @@ getNewQuestion = () => {
 
     choices.forEach(choice => {
         const number = choice.dataset['number']
-        choice.innerText = currentQuestion['choice' + number]
+        choice.innerText = currentQuestion['choice' + number];
     })
 
     availableQuestions.splice(questionsIndex, 1)
